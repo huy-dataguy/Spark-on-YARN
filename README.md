@@ -142,6 +142,10 @@ You can access the following web interfaces to monitor and manage your Hadoop cl
 
 - **NameNode UI** → [http://localhost:9870](http://localhost:9870)  
   Displays HDFS file system details, block distribution, and overall health status.
+
+- **Spark Web UI** → [http://localhost:4040](http://localhost:4040)
+  Provides an interface to monitor running Spark jobs, stages, and tasks.
+  Note: Because you are using YARN client mode, the Spark UI will automatically redirect to the master node's web UI.
 ---
 ## 📚 Reference Materials
 
