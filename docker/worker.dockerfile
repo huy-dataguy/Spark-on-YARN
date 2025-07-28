@@ -9,4 +9,10 @@ WORKDIR /home/spark-user
 COPY config/worker/hdfs-site.xml hadoop/etc/hadoop/hdfs-site.xml
 
 # Start SSH and Hadoop services at runtime
-CMD ["/bin/bash", "-c", "service ssh start && su - spark-user && bash"]
+USER root
+
+
+COPY config/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT [ "/entrypoint.sh" ]

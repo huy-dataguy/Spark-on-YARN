@@ -28,15 +28,15 @@ RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz
 
 # Install SPARK
 
-RUN wget https://dlcdn.apache.org/spark/spark-3.4.4/spark-3.4.4-bin-hadoop3.tgz && \
-    tar -xvzf spark-3.4.4-bin-hadoop3.tgz && \
-    mv spark-3.4.4-bin-hadoop3 spark && \
-    rm spark-3.4.4-bin-hadoop3.tgz
+RUN wget https://dlcdn.apache.org/spark/spark-3.5.6/spark-3.5.6-bin-without-hadoop.tgz && \
+    tar -xvzf spark-3.5.6-bin-without-hadoop.tgz && \
+    mv spark-3.5.6-bin-without-hadoop spark && \
+    rm spark-3.5.6-bin-without-hadoop.tgz
 
 # Setup env
 RUN echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'>>~/.bashrc
-RUN echo 'export HADOOP_HOME=/home/sparkuser/hadoop'>>~/.bashrc
-RUN echo 'export SPARK_HOME=/home/sparkuser/spark'>>~/.bashrc
+RUN echo 'export HADOOP_HOME=/home/spark-user/hadoop'>>~/.bashrc
+RUN echo 'export SPARK_HOME=/home/spark-user/spark'>>~/.bashrc
 RUN echo 'export PATH=$PATH:$HADOOP_HOME/sbin' >> ~/.bashrc
 RUN echo 'export PATH=$PATH:$HADOOP_HOME/bin' >> ~/.bashrc
 
@@ -56,7 +56,7 @@ RUN echo 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"'>>~/.
 
 RUN echo 'export SPARK_DIST_CLASSPATH="$(hadoop classpath)"'>>~/.bashrc
 
-RUN echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'>>/home/sparkuser/hadoop/etc/hadoop/hadoop-env.sh
+RUN echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'>> hadoop/etc/hadoop/hadoop-env.sh
 
 
 # create ssh for all server with the same key

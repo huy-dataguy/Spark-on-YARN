@@ -8,10 +8,13 @@ WORKDIR /home/spark-user
 COPY    config/master/hdfs-site.xml hadoop/etc/hadoop/hdfs-site.xml
 COPY    config/master/workers hadoop/etc/hadoop/workers
 
-
-# Format HDFS
-USER spark-user
-RUN hdfs namenode -format
-
+# format hdfs
+RUN /home/spark-user/hadoop/bin/hdfs namenode -format
 # Start SSH and Hadoop services
-CMD ["/bin/bash", "-c", "service ssh start && su - spark-user && bash"]
+USER root
+
+
+COPY config/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT [ "/entrypoint.sh" ]
