@@ -17,24 +17,33 @@ limitations under the License. See accompanying LICENSE file.
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-	<property>
+	<property> 
 
-		<name>dfs.replication</name>
+		<name>fs.defaultFS</name>
 
-		<value>2</value>
-	</property>
-	<property>
+		<value>hdfs://master-server:9000</value>
 
-		<name>dfs.namenode.name.dir</name>
+		<description>Use HDFS as file storage engine</description>
 
-		<value>/home/hadoopquochuy/hadoop/hadoop_data/hdfs/namenode</value>
 	</property>
 
+		<property>
+
+		<name>hadoop.tmp.dir</name>
+
+		<value>/home/spark-user/tmp</value>
+
+		<description>Temporary Directory.</description>
+
+	</property>
+
 	<property>
-
-		<name>dfs.datanode.data.dir</name>
-
-		<value>/home/hadoopquochuy/hadoop/hadoop_data/hdfs/datanode</value>
+  		<name>hadoop.proxyuser.spark-user.hosts</name>
+		<value>*</value>
+	</property>
+	<property>
+  		<name>hadoop.proxyuser.spark-user.groups</name>
+  		<value>*</value>
 	</property>
 
 </configuration>

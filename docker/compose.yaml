@@ -4,26 +4,26 @@ networks:
 
 services:
   client:
+    build:
+      context: ../
+      dockerfile: docker/client.dockerfile
     image: client
     container_name: client
-    hostname: quochuy-client
+    hostname: client-server
     ports:
       - "4040:4040"
-    volumes:
-      - ./data:/home/hadoopquochuy/data
-
 
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
 
   master:
-    image: master-official
+    build:
+      context: ../
+      dockerfile: docker/master.dockerfile
+    image: master
     container_name: master
-    hostname: quochuy-master
-    volumes:
-      - hdfs_namenode:/home/hadoopquochuy/hadoop/hadoop_data/hdfs/namenode
-      - ./scripts:/home/hadoopquochuy/scripts
+    hostname: master-server
 
     ports:
       - "9004:9004"
@@ -34,27 +34,29 @@ services:
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
     
   worker1:
+    build:
+      context: ../
+      dockerfile: docker/worker.dockerfile
     image: worker
     container_name: worker1
-    hostname: quochuy-worker1
-    volumes:
-      - hdfs_datanode1:/home/hadoopquochuy/hadoop/hadoop_data/hdfs/datanode
+    hostname: worker1-server
+    ports:
+      - "19004:9004"
+      - "19870:9870"
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
 
   worker2:
+    build:
+      context: ../
+      dockerfile: docker/worker.dockerfile
     image: worker
     container_name: worker2
-    hostname: quochuy-worker2
-    volumes:
-      - hdfs_datanode2:/home/hadoopquochuy/hadoop/hadoop_data/hdfs/datanode
+    hostname: worker2-server
+    ports:
+      - "29004:9004"
+      - "29870:9870"
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-
-volumes:
-  hdfs_namenode:
-  hdfs_datanode1:
-  hdfs_datanode2:

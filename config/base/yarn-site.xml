@@ -26,8 +26,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.nodemanager.env-whitelist</name>
 
-		<value>
-			JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+		<value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
 
 	</property>
 
@@ -35,7 +34,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.scheduler.address</name>
 
-		<value>quochuy-master:9002</value>
+		<value>master-server:9002</value>
 
 	</property>
 
@@ -43,7 +42,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.address</name>
 
-		<value>quochuy-master:9003</value>
+		<value>master-server:9003</value>
 
 	</property>
 
@@ -51,7 +50,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.webapp.address</name>
 
-		<value>quochuy-master:9004</value>
+		<value>master-server:9004</value>
 
 	</property>
 
@@ -59,7 +58,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.resource-tracker.address</name>
 
-		<value>quochuy-master:9005</value>
+		<value>master-server:9005</value>
 
 	</property>
 
@@ -67,17 +66,8 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.admin.address</name>
 
-		<value>quochuy-master:9006</value>
+		<value>master-server:9006</value>
 
-	</property>
-	<property>
-		<name>yarn.scheduler.maximum-allocation-mb</name>
-		<value>2048</value>
-	</property>
-
-	<property>
-		<name>yarn.nodemanager.resource.memory-mb</name>
-		<value>2048</value>
 	</property>
 
 </configuration>
