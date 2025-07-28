@@ -5,8 +5,8 @@ USER spark-user
 WORKDIR /home/spark-user
 
 # Copy Hadoop configuration files
-COPY    config/master/hdfs-site.xml hadoop/etc/hadoop/hdfs-site.xml && \
-        config/master/workers hadoop/etc/hadoop/workers
+COPY    config/master/hdfs-site.xml hadoop/etc/hadoop/hdfs-site.xml
+COPY    config/master/workers hadoop/etc/hadoop/workers
 
 
 # Format HDFS

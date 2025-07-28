@@ -67,9 +67,11 @@ RUN mkdir -p /home/spark-user/.ssh && \
     chmod 600 /home/spark-user/.ssh/authorized_keys && \
     chown -R spark-user:spark-user /home/spark-user/.ssh
 
+USER spark-user
 
+WORKDIR /home/spark-user
 # copy file config hadoop to container
-COPY    config/base/core-site.xml hadoop/etc/hadoop/core-site.xml && \
-        config/base/mapred-site.xml hadoop/etc/hadoop/mapred-site.xml && \
-        config/base/yarn-site.xml hadoop/etc/hadoop/yarn-site.xml
+COPY    config/base/core-site.xml /home/spark-user/hadoop/etc/hadoop/core-site.xml 
+COPY    config/base/mapred-site.xml /home/spark-user/hadoop/etc/hadoop/mapred-site.xml 
+COPY    config/base/yarn-site.xml /home/spark-user/hadoop/etc/hadoop/yarn-site.xml
 
